@@ -45,14 +45,15 @@ public:
 	{
 		return flSelected;
 	}
-	size_t getNum()
+	size_t getTask()
 	{
-		return static_cast <int> (task);
+		return task;
 	}
 	void switchSelect(bool fl)
 	{
 		flSelected = fl;
 	}
+	void execTask();
 	
 	
 

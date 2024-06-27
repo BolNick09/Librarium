@@ -11,8 +11,15 @@ private:
 	std::string name;
 	size_t dateOfBirth;
 	std::vector <Item*> vOwnItems;
+public:
+	Author(std::string name, size_t dateOfBirth) : name(name), dateOfBirth(dateOfBirth) {}
+	void addAuthor(std::vector<Author>& vAuthors, Author author);
+	void printAuthors(std::vector<Author>& vAuthors);
+	Author* findAuthor(std::vector<Author>& vAuthors, std::string name);
+
 
 };
+std::vector <Author> vAuthors;
 
 class Client
 {
@@ -23,6 +30,7 @@ private:
 	std::vector <Item*> vTakenItems;
 
 };
+std::vector <Client> vClients;
 //------------------------------------------
 
 class Item
@@ -50,6 +58,7 @@ private:
 	size_t pubNum;
 	std::string category;
 };
+std::vector <Item> vItems;
 
 
 
