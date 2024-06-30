@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
 //------------------------------------------
 
 class Item;
@@ -13,13 +14,9 @@ private:
 	std::vector <Item*> vOwnItems;
 public:
 	Author(std::string name, size_t dateOfBirth) : name(name), dateOfBirth(dateOfBirth) {}
-	void addAuthor(std::vector<Author>& vAuthors, Author author);
-	void printAuthors(std::vector<Author>& vAuthors);
+	static void printAuthors(std::vector<Author>& vAuthors);
 	Author* findAuthor(std::vector<Author>& vAuthors, std::string name);
-
-
 };
-std::vector <Author> vAuthors;
 
 class Client
 {
@@ -28,9 +25,19 @@ private:
 	std::string sureName;
 	size_t cardNum;
 	std::vector <Item*> vTakenItems;
+public:
+	Client(std::string firstName, std::string sureName, size_t cardNum) : firstName(firstName), sureName(sureName), cardNum(cardNum) {}
+
+	void print()
+	{
+		std::cout << "Имя: " << firstName << " Фамилия: " << sureName << " Номер читательского билета: " << cardNum << std::endl;
+	}
+	static void printClients(const std::vector <Client>& vClient);
+	static Client* find(const std::string& Name, std::vector <Client>& vClient);
+	static Client* find(size_t cardNum, std::vector <Client>& vClient);
+
 
 };
-std::vector <Client> vClients;
 //------------------------------------------
 
 class Item
@@ -58,7 +65,6 @@ private:
 	size_t pubNum;
 	std::string category;
 };
-std::vector <Item> vItems;
 
 
 

@@ -1,7 +1,7 @@
-#pragma once
 #include "LibrariumMenu.h"
 
 #include <conio.h>
+
 
 
 void Menu::fillVMenuItems()
@@ -84,7 +84,7 @@ void Menu::navigate(const char key)
             }
 			case 13: //ENTER
 			{
-				vPtrMenuItems[selectedItem]->execTask();
+				Menu::execTask(static_cast <Tasks> (vPtrMenuItems[selectedItem]->getTask()));
 				break;
 			}
 		default:
@@ -98,7 +98,7 @@ void Menu::navigate(const char key)
 
 }
 
-void MenuItem::execTask()
+void Menu::execTask(Tasks task)
 {
 	system("cls");
 	
@@ -140,40 +140,103 @@ void MenuItem::execTask()
 			break;
 		}
 		case AUTHOR_ADD :
-		{
-			
+		{			
 			std::cout << "Выбрана функция добавления автора" << std::endl;	//Добавить автора
-			std::cout << "Введите имя: ";
+
+			std::cout << "Введите имя: (латиницей) ";
 			std::string name;
-			std::cin >> name;
+			std::getline(std::cin, name);
 			std::cout << std::endl << "Введите год рождения: ";
 			int age;
 			std::cin >> age;
-			Author author(name, age);
-			author.addAuthor(vAuthors, author);
-			std::cout << std::endl << "Автор " << name << "успешно добавлен." << std::endl << "нажмите любую клавишу, чтобы вернуться в меню";
+			vAuthors.push_back (Author (name, age));
+			std::cout << std::endl << "Автор " << name << "успешно добавлен." << std::endl << "нажмите клавишу ENTER, чтобы вернуться в меню";
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
 			char k = _getch();
+			system("cls");
 
 			break;
 		}
 		case AUTHOR_LIST :
 		{
-			std::cout << "AUTHOR_LIST" << std::endl;	//Список всех авторов
+			
+			std::cout << "Выбрана функция вывода списка авторов" << std::endl;	//Список всех авторов
+			Author::printAuthors(vAuthors);
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case CLIENT_ADD :
 		{
-			std::cout << "CLIENT_ADD" << std::endl;	//Добавить читателя
+			std::cout << "Выбрана функция добавления читателя" << std::endl;	//Добавить читателя
+
+			std::cout << "Введите имя: (латиницей) ";
+			std::string firstName;
+			std::getline(std::cin, firstName);
+
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
+
+			std::cout << "Введите фамилию: (латиницей) ";
+			std::string sureName;
+			std::getline(std::cin, sureName);
+
+			int cardNum;
+			std::cout << "Производится генерация номера читательского билета" << std::endl;
+			do  //генерация уникального номера читательского билета
+			{
+				cardNum = rand() % 10000;
+			} 
+			while (Client::find(cardNum, vClients));
+
+			vClients.push_back(Client(firstName, sureName, cardNum));
+			std::cout << std::endl << "Читатель " << firstName << " " << sureName << " читательский билет #" << cardNum << " успешно добавлен." << std::endl 
+				      << "нажмите клвишу ENTER, чтобы вернуться в меню";
+			
+			char k = _getch();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
+			system("cls");
 			break;
 		}
 		case CLIENT_SEARCH :
 		{
-			std::cout << "CLIENT_SEARCH" << std::endl;	//Поиск читателя
+			std::cout << "Выбрана функция поиска читателей" << std::endl;	//Поиск читателя
+			std::cout << "Поиск по имени или номеру читательского билета? (0 - имя, 1 - билет)" << std::endl;
+			bool isCard;
+			std::cin >> isCard;
+			if (!isCard)
+			{
+				std::cout << "Введите имя или фамилию: ";
+				std::string name;
+				std::cin >> name;
+				Client* fClient = Client::find(name, vClients);
+				if (fClient)
+				{
+					std::cout << "Читатель найден" << std::endl;
+					fClient->print();
+				}
+			}
+			else
+			{
+				std::cout << "Введите номер читательского билета: ";
+				size_t cardNum;
+				std::cin >> cardNum;
+				Client* fClient = Client::find(cardNum, vClients);
+				if (fClient)
+				{
+					std::cout << "Читатель найден" << std::endl;
+					fClient->print();
+				}
+			}
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case CLIENT_LIST :
 		{
-			std::cout << "CLIENT_LIST" << std::endl;	//Список всех читателей
+			std::cout << "Выбрана функция вывода списка читателей" << std::endl;	//Список всех читателей
+			Client::printClients(vClients);
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case ITEM_TAKE_BACK :

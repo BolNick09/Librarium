@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LibClasses.h" />
+    <ClInclude Include="Librarium.h" />
     <ClInclude Include="LibrariumMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

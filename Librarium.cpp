@@ -1,6 +1,5 @@
 ﻿// Librarium.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
-#pragma once
 #include <iostream>
 #include <vector>
 #include <map>
@@ -9,7 +8,7 @@
 #include <Windows.h>
 #include <conio.h>
 
-#include "LibrariumMenu.h"
+#include "Librarium.h"
 
 using namespace std;
 

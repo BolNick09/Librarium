@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-
 #include "LibClasses.h"
 
 
@@ -53,22 +52,23 @@ public:
 	{
 		flSelected = fl;
 	}
-	void execTask();
-	
-	
-
 };
 
 class Menu
 {
 private:
 	std::vector <MenuItem* > vPtrMenuItems;
+
+	std::vector<Author> vAuthors;
+	std::vector<Client> vClients;
+	std::vector<Item> vItems;
 public:
 	void fillVMenuItems();
 	void printMenu() const;
 
 	void navigate(const char key);
 	int findSelected();
+	void execTask(Tasks task);
 
 
 };
