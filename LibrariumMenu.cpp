@@ -113,6 +113,16 @@ void Menu::execTask(Tasks task)
 		case BOOK_ADD :
 		{
 			std::cout << "Выбрана функция добавления книги" << std::endl;			//Добавить книгу
+			if (!vAuthors.size())
+			{
+				std::cout << "Не найдено ни одного автора" << std::endl;
+				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+
+				char k = _getch();
+				system("cls");
+				break;
+			}
+
 			std::cout << "Введите полное имя автора, список авторов приведен ниже: " << std::endl;
 			Author::printAuthors(vAuthors);
 			std::string authorName;
@@ -121,7 +131,7 @@ void Menu::execTask(Tasks task)
 			Author* author = Author::findAuthor(vAuthors, authorName);
 			if (!author)
 			{
-				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;					
+				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
 
 				char k = _getch();				
 				system("cls");
