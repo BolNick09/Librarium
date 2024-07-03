@@ -1,6 +1,7 @@
 #include "LibrariumMenu.h"
 
 #include <conio.h>
+#include <random>
 
 
 
@@ -111,7 +112,51 @@ void Menu::execTask(Tasks task)
 		}
 		case BOOK_ADD :
 		{
-			std::cout << "BOOK_ADD" << std::endl;			//Добавить книгу
+			std::cout << "Выбрана функция добавления книги" << std::endl;			//Добавить книгу
+			std::cout << "Введите полное имя автора, список авторов приведен ниже: " << std::endl;
+			Author::printAuthors(vAuthors);
+			std::string authorName;
+			std::getline(std::cin, authorName);
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			Author* author = Author::findAuthor(vAuthors, authorName);
+			if (!author)
+			{
+				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;					
+
+				char k = _getch();				
+				system("cls");
+				break;
+			}
+			std::cout << "Введите название книги: ";
+			std::string bookName;
+			std::getline(std::cin, bookName);
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << "Введите год издания: ";
+			size_t year;
+			std::cin >> year;
+			std::cout << std::endl;
+
+			std::cout << "Введите количество страниц: ";
+			size_t pageCount;
+			std::cin >> pageCount;
+			std::cout << std::endl;
+
+			std::cout << "Введите количество книг: ";
+			size_t bookCount;
+			std::cin >> bookCount;
+			std::cout << std::endl;
+			Book* book = new Book(bookCount * pageCount * rand() % 1000, bookName, author, year, bookCount, bookCount, generateISBN(), pageCount);
+			author->attachItem(book);
+			vItems.push_back(std::move (book));
+
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+
+			char k = _getch();
+			system("cls");
+
 			break;
 		}
 		case BOOK_SEARCH :
@@ -121,7 +166,12 @@ void Menu::execTask(Tasks task)
 		}
 		case BOOK_LIST :
 		{
-			std::cout << "BOOK_LIST" << std::endl;	//Список всех книг
+			std::cout << "Выбрана функция вывода списка всех книг" << std::endl;	//Список всех книг
+			for (Item* item : vItems) 
+			{				
+				if (dynamic_cast<Book*>(item)) 
+					static_cast<Book*>(item)->print();				
+			}
 			break;
 		}
 		case JOURNAL_ADD :
@@ -149,7 +199,7 @@ void Menu::execTask(Tasks task)
 			std::cout << std::endl << "Введите год рождения: ";
 			int age;
 			std::cin >> age;
-			vAuthors.push_back (Author (name, age));
+			vAuthors.push_back (new Author (name, age));
 			std::cout << std::endl << "Автор " << name << "успешно добавлен." << std::endl << "нажмите клавишу ENTER, чтобы вернуться в меню";
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
 			char k = _getch();
@@ -174,7 +224,7 @@ void Menu::execTask(Tasks task)
 			std::string firstName;
 			std::getline(std::cin, firstName);
 
-			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
 
 			std::cout << "Введите фамилию: (латиницей) ";
 			std::string sureName;
@@ -188,7 +238,7 @@ void Menu::execTask(Tasks task)
 			} 
 			while (Client::find(cardNum, vClients));
 
-			vClients.push_back(Client(firstName, sureName, cardNum));
+			vClients.push_back(new Client(firstName, sureName, cardNum));
 			std::cout << std::endl << "Читатель " << firstName << " " << sureName << " читательский билет #" << cardNum << " успешно добавлен." << std::endl 
 				      << "нажмите клвишу ENTER, чтобы вернуться в меню";
 			
@@ -271,5 +321,30 @@ void Menu::execTask(Tasks task)
 		}
 		
 	}
+}
+
+
+
+
+std::string generateISBN() 
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+
+	std::string isbn;
+	for (int i = 0; i < 9; i++) 
+		isbn += std::to_string(gen() % 10);
+	
+
+	int sum = 0;
+	for (int i = 0; i < 9; i++) 
+		sum += (i + 1) * (isbn[i] - '0');
+	
+	int checkDigit = (11 - sum % 11) % 11;
+
+	// Добавляем контрольную цифру к ISBN
+	isbn += std::to_string(checkDigit);
+
+	return isbn;
 }
 

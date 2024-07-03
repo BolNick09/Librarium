@@ -57,11 +57,11 @@ public:
 class Menu
 {
 private:
-	std::vector <MenuItem* > vPtrMenuItems;
+	std::vector <MenuItem*> vPtrMenuItems;
 
-	std::vector<Author> vAuthors;
-	std::vector<Client> vClients;
-	std::vector<Item> vItems;
+	std::vector<Author*> vAuthors;
+	std::vector<Client*> vClients;
+	std::vector<Item*> vItems;
 public:
 	void fillVMenuItems();
 	void printMenu() const;
@@ -70,9 +70,17 @@ public:
 	int findSelected();
 	void execTask(Tasks task);
 
+	~Menu()
+	{
+		vAuthors.clear();
+		vClients.clear();
+		vAuthors.clear();
+		vPtrMenuItems.clear();
+	}
+
 
 };
-
+std::string generateISBN();
 
 
 
