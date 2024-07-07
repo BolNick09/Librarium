@@ -1,4 +1,4 @@
-#include "LibClasses.h"
+п»ї#include "LibClasses.h"
 
 #include <algorithm>
 #include <iostream>
@@ -13,7 +13,7 @@ void Author::printAuthors(std::vector<Author*>& vAuthors, bool isWithBooks)
         std::cout << "Name: " << author->name << " Date of birth: " << author->dateOfBirth << " Num of books: " << author->vOwnItems.size() << std::endl;
         if (author->vOwnItems.size() && isWithBooks)
         {
-            std::cout << "Список книг автора: " << std::endl;
+            std::cout << "РЎРїРёСЃРѕРє РєРЅРёРі Р°РІС‚РѕСЂР°: " << std::endl;
             for (Item* item : author->vOwnItems)            
                 item->print();            
         }
@@ -29,7 +29,7 @@ Author* Author::findAuthor(std::vector<Author*>& vAuthors, const std::string& na
             return author;
         
     }
-    //std::cout << "Автор не найден" << std::endl;
+    //std::cout << "РђРІС‚РѕСЂ РЅРµ РЅР°Р№РґРµРЅ" << std::endl;
     return nullptr;
 }
 
@@ -52,7 +52,7 @@ void Client::printClients(const std::vector <Client*>& vClient, bool isPrintBook
 
 Client* Client::find(const std::string& name, std::vector <Client*>& vClient)
 {
-    //std::cout << "Выбран поиск по имени или фамилии" << std::endl;
+    //std::cout << "Р’С‹Р±СЂР°РЅ РїРѕРёСЃРє РїРѕ РёРјРµРЅРё РёР»Рё С„Р°РјРёР»РёРё" << std::endl;
     for (Client* client : vClient) 
     {
         if (client->firstName == name)
@@ -61,19 +61,19 @@ Client* Client::find(const std::string& name, std::vector <Client*>& vClient)
             return client;
         
     }
-    //std::cout << "Клиент не найден" << std::endl;
+    //std::cout << "РљР»РёРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ" << std::endl;
     return nullptr;
 }
 
 Client* Client::find(size_t cardNum, std::vector<Client*>& vClient)
 {
-    //std::cout << "Выбран поиск по номеру читательского билета" << std::endl;
+    //std::cout << "Р’С‹Р±СЂР°РЅ РїРѕРёСЃРє РїРѕ РЅРѕРјРµСЂСѓ С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°" << std::endl;
     for (Client* client : vClient) 
     {
         if (client->cardNum == cardNum)
             return client;        
     }
-    //std::cout << "Клиент не найден" << std::endl;
+    //std::cout << "РљР»РёРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ" << std::endl;
     return nullptr;
 }
 
@@ -85,7 +85,7 @@ void Client::takeItem(Item* item)
         item->give();
     }
     else
-        std::cout << "В библиотеке закончилась эта книга" << std::endl;
+        std::cout << "Р’ Р±РёР±Р»РёРѕС‚РµРєРµ Р·Р°РєРѕРЅС‡РёР»Р°СЃСЊ СЌС‚Р° РєРЅРёРіР°" << std::endl;
 }
 
 void Client::giveBackItem(Item* item)
@@ -99,21 +99,21 @@ void Client::giveBackItem(Item* item)
             return;
         }
     }
-    std::cout << "У читателя нет такой книги" << std::endl;
+    std::cout << "РЈ С‡РёС‚Р°С‚РµР»СЏ РЅРµС‚ С‚Р°РєРѕР№ РєРЅРёРіРё" << std::endl;
     return;
     
 }
 
 void Book::print() const
 {
-    std::cout << "  Данные книги: " << name << std::endl;
+    std::cout << "  Р”Р°РЅРЅС‹Рµ РєРЅРёРіРё: " << name << std::endl;
     std::cout << "  ID: " << id << std::endl;
-    std::cout << "  Автор: " << author->getName() << std::endl;
-    std::cout << "  Год публикации: " << publishYear << std::endl;
-    std::cout << "  Общий тираж: " << totalCount << std::endl;
-    std::cout << "  Доступно экземпляров: " << availableCount << std::endl;
+    std::cout << "  РђРІС‚РѕСЂ: " << author->getName() << std::endl;
+    std::cout << "  Р“РѕРґ РїСѓР±Р»РёРєР°С†РёРё: " << publishYear << std::endl;
+    std::cout << "  РћР±С‰РёР№ С‚РёСЂР°Р¶: " << totalCount << std::endl;
+    std::cout << "  Р”РѕСЃС‚СѓРїРЅРѕ СЌРєР·РµРјРїР»СЏСЂРѕРІ: " << availableCount << std::endl;
     std::cout << "  ISBN: " << ISBN << std::endl;
-    std::cout << "  Количество страниц: " << pageCount << std::endl;
+    std::cout << "  РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС†: " << pageCount << std::endl;
 }
 
 Item* Item::find(const std::string& name, std::vector<Item*>& vItems)
@@ -143,7 +143,7 @@ Book* Book::find(int year, std::vector <Item*>& vItems)
     if (item && dynamic_cast<Book*>(item)) 
         return dynamic_cast<Book*>(item);
     
-    return nullptr;  // Ничего не найдено
+    return nullptr;  // РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
 }
 
 Book* Book::find(const std::string& name, std::vector <Item*>& vItems)
@@ -152,7 +152,7 @@ Book* Book::find(const std::string& name, std::vector <Item*>& vItems)
     if (item && dynamic_cast<Book*>(item))
         return dynamic_cast<Book*>(item);
 
-    return nullptr;  // Ничего не найдено
+    return nullptr;  // РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
 }
 
 Journal* Journal::find(int year, std::vector <Item*>& vItems)
@@ -161,7 +161,7 @@ Journal* Journal::find(int year, std::vector <Item*>& vItems)
     if (item && dynamic_cast<Journal*>(item) )
         return dynamic_cast<Journal*>(item);
 
-    return nullptr;  // Ничего не найдено
+    return nullptr;  // РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
 }
 
 Journal* Journal::find(const std::string& name, std::vector <Item*>& vItems)
@@ -170,19 +170,19 @@ Journal* Journal::find(const std::string& name, std::vector <Item*>& vItems)
     if (item && dynamic_cast<Journal*>(item))
         return dynamic_cast<Journal*>(item);
 
-    return nullptr;  // Ничего не найдено
+    return nullptr;  // РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
 }
 
 void Journal::print() const
 {
-    std::cout << "Данные журнала: " << name << std::endl;
+    std::cout << "Р”Р°РЅРЅС‹Рµ Р¶СѓСЂРЅР°Р»Р°: " << name << std::endl;
     std::cout << "  ID: " << id << std::endl;
-    std::cout << "  Автор: " << author->getName() << std::endl;
-    std::cout << "  Год публикации: " << publishYear << std::endl;
-    std::cout << "  Общий тираж: " << totalCount << std::endl;
-    std::cout << "  Доступно экземпляров: " << availableCount << std::endl;
-    std::cout << "  Номер публикации: " << pubNum << std::endl;
-    std::cout << "  Категория: " << category << std::endl;
+    std::cout << "  РђРІС‚РѕСЂ: " << author->getName() << std::endl;
+    std::cout << "  Р“РѕРґ РїСѓР±Р»РёРєР°С†РёРё: " << publishYear << std::endl;
+    std::cout << "  РћР±С‰РёР№ С‚РёСЂР°Р¶: " << totalCount << std::endl;
+    std::cout << "  Р”РѕСЃС‚СѓРїРЅРѕ СЌРєР·РµРјРїР»СЏСЂРѕРІ: " << availableCount << std::endl;
+    std::cout << "  РќРѕРјРµСЂ РїСѓР±Р»РёРєР°С†РёРё: " << pubNum << std::endl;
+    std::cout << "  РљР°С‚РµРіРѕСЂРёСЏ: " << category << std::endl;
 }
 
 

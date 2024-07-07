@@ -1,4 +1,4 @@
-#include "LibrariumMenu.h"
+п»ї#include "LibrariumMenu.h"
 
 #include <conio.h>
 #include <random>
@@ -7,29 +7,29 @@
 
 void Menu::fillVMenuItems()
 {
-	vPtrMenuItems.push_back(new MenuItem("\t1. Управление книгами", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t1.1. Добавить книгу", Tasks::BOOK_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t1.2. Поиск книги", Tasks::BOOK_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t1.3. Список всех книг", Tasks::BOOK_LIST));
-	vPtrMenuItems.push_back(new MenuItem("\t2. Управление журналами", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t2.1. Добавить журнал", Tasks::JOURNAL_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t2.2. Поиск журнала", Tasks::JOURNAL_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t2.3. Список всех журналов", Tasks::JOURNAL_LIST));
-	vPtrMenuItems.push_back(new MenuItem("\t3. Управление авторами", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t3.1. Добавить автора", Tasks::AUTHOR_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t3.2. Список всех авторов", Tasks::AUTHOR_LIST));
-	vPtrMenuItems.push_back(new MenuItem("\t4. Управление читателями", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t4.1. Добавить читателя", Tasks::CLIENT_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t4.2. Поиск читателя", Tasks::CLIENT_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t4.3. Список всех читателей", Tasks::CLIENT_LIST));
-	vPtrMenuItems.push_back(new MenuItem("\t5. Выдача предметов читателям", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t5.1. Выдать предмет", Tasks::ITEM_GIVE));
-	vPtrMenuItems.push_back(new MenuItem("\t6. Возврат предметов от читателей", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t6.1. Вернуть предмет", Tasks::ITEM_TAKE_BACK));
-	vPtrMenuItems.push_back(new MenuItem("\t7. Общий поиск по книгам и журналам", Tasks::ITEM_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t7.1. Поиск по году выхода", Tasks::ITEM_SEARCH_YEAR));
-	vPtrMenuItems.push_back(new MenuItem("\t8. Загрузка данных", Tasks::ITEM_LOAD_FILE));
-	vPtrMenuItems.push_back(new MenuItem("\t9. Выход", Tasks::EXIT));
+	vPtrMenuItems.push_back(new MenuItem("\t1. РЈРїСЂР°РІР»РµРЅРёРµ РєРЅРёРіР°РјРё", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t1.1. Р”РѕР±Р°РІРёС‚СЊ РєРЅРёРіСѓ", Tasks::BOOK_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t1.2. РџРѕРёСЃРє РєРЅРёРіРё", Tasks::BOOK_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t1.3. РЎРїРёСЃРѕРє РІСЃРµС… РєРЅРёРі", Tasks::BOOK_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t2. РЈРїСЂР°РІР»РµРЅРёРµ Р¶СѓСЂРЅР°Р»Р°РјРё", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t2.1. Р”РѕР±Р°РІРёС‚СЊ Р¶СѓСЂРЅР°Р»", Tasks::JOURNAL_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t2.2. РџРѕРёСЃРє Р¶СѓСЂРЅР°Р»Р°", Tasks::JOURNAL_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t2.3. РЎРїРёСЃРѕРє РІСЃРµС… Р¶СѓСЂРЅР°Р»РѕРІ", Tasks::JOURNAL_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t3. РЈРїСЂР°РІР»РµРЅРёРµ Р°РІС‚РѕСЂР°РјРё", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t3.1. Р”РѕР±Р°РІРёС‚СЊ Р°РІС‚РѕСЂР°", Tasks::AUTHOR_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t3.2. РЎРїРёСЃРѕРє РІСЃРµС… Р°РІС‚РѕСЂРѕРІ", Tasks::AUTHOR_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t4. РЈРїСЂР°РІР»РµРЅРёРµ С‡РёС‚Р°С‚РµР»СЏРјРё", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t4.1. Р”РѕР±Р°РІРёС‚СЊ С‡РёС‚Р°С‚РµР»СЏ", Tasks::CLIENT_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t4.2. РџРѕРёСЃРє С‡РёС‚Р°С‚РµР»СЏ", Tasks::CLIENT_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t4.3. РЎРїРёСЃРѕРє РІСЃРµС… С‡РёС‚Р°С‚РµР»РµР№", Tasks::CLIENT_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t5. Р’С‹РґР°С‡Р° РїСЂРµРґРјРµС‚РѕРІ С‡РёС‚Р°С‚РµР»СЏРј", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t5.1. Р’С‹РґР°С‚СЊ РїСЂРµРґРјРµС‚", Tasks::ITEM_GIVE));
+	vPtrMenuItems.push_back(new MenuItem("\t6. Р’РѕР·РІСЂР°С‚ РїСЂРµРґРјРµС‚РѕРІ РѕС‚ С‡РёС‚Р°С‚РµР»РµР№", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t6.1. Р’РµСЂРЅСѓС‚СЊ РїСЂРµРґРјРµС‚", Tasks::ITEM_TAKE_BACK));
+	vPtrMenuItems.push_back(new MenuItem("\t7. РћР±С‰РёР№ РїРѕРёСЃРє РїРѕ РєРЅРёРіР°Рј Рё Р¶СѓСЂРЅР°Р»Р°Рј", Tasks::ITEM_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t7.1. РџРѕРёСЃРє РїРѕ РіРѕРґСѓ РІС‹С…РѕРґР°", Tasks::ITEM_SEARCH_YEAR));
+	vPtrMenuItems.push_back(new MenuItem("\t8. Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…", Tasks::ITEM_LOAD_FILE));
+	vPtrMenuItems.push_back(new MenuItem("\t9. Р’С‹С…РѕРґ", Tasks::EXIT));
 }
 
 void Menu::printMenu() const
@@ -63,7 +63,7 @@ void Menu::navigate(const char key)
 
 	switch (key)
 	{
-		    case 72: // Клавиша со стрелкой вверх
+		    case 72: // РљР»Р°РІРёС€Р° СЃРѕ СЃС‚СЂРµР»РєРѕР№ РІРІРµСЂС…
             {
 				if (selectedItem > 0)
 				{
@@ -73,7 +73,7 @@ void Menu::navigate(const char key)
 				}
                 break;
             }
-            case 80: // Клавиша со стрелкой вниз
+            case 80: // РљР»Р°РІРёС€Р° СЃРѕ СЃС‚СЂРµР»РєРѕР№ РІРЅРёР·
             {
 				if (selectedItem < vPtrMenuItems.size() - 1)
 				{
@@ -107,23 +107,23 @@ void Menu::execTask(Tasks task)
 	{
 		case TITLE :
 		{
-			std::cout << "TITLE" << std::endl; //Заголовочный пункт
+			std::cout << "TITLE" << std::endl; //Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ РїСѓРЅРєС‚
 			break;
 		}
 		case BOOK_ADD :
 		{
-			std::cout << "Выбрана функция добавления книги" << std::endl;			//Добавить книгу
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ РєРЅРёРіРё" << std::endl;			//Р”РѕР±Р°РІРёС‚СЊ РєРЅРёРіСѓ
 			if (!vAuthors.size())
 			{
-				std::cout << "Не найдено ни одного автора" << std::endl;
-				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+				std::cout << "РќРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ Р°РІС‚РѕСЂР°" << std::endl;
+				std::cout << "РЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ" << std::endl;
 
 				char k = _getch();
 				system("cls");
 				break;
 			}
 
-			std::cout << "Введите полное имя автора, список авторов приведен ниже: " << std::endl;
+			std::cout << "Р’РІРµРґРёС‚Рµ РїРѕР»РЅРѕРµ РёРјСЏ Р°РІС‚РѕСЂР°, СЃРїРёСЃРѕРє Р°РІС‚РѕСЂРѕРІ РїСЂРёРІРµРґРµРЅ РЅРёР¶Рµ: " << std::endl;
 			Author::printAuthors(vAuthors);
 			std::string authorName;
 			std::getline(std::cin, authorName);
@@ -131,28 +131,28 @@ void Menu::execTask(Tasks task)
 			Author* author = Author::findAuthor(vAuthors, authorName);
 			if (!author)
 			{
-				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+				std::cout << "РЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ" << std::endl;
 
 				char k = _getch();				
 				system("cls");
 				break;
 			}
-			std::cout << "Введите название книги: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєРЅРёРіРё: ";
 			std::string bookName;
 			std::getline(std::cin, bookName);
 			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-			std::cout << "Введите год издания: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ РёР·РґР°РЅРёСЏ: ";
 			size_t year;
 			std::cin >> year;
 			std::cout << std::endl;
 
-			std::cout << "Введите количество страниц: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС†: ";
 			size_t pageCount;
 			std::cin >> pageCount;
 			std::cout << std::endl;
 
-			std::cout << "Введите количество книг: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРЅРёРі: ";
 			size_t bookCount;
 			std::cin >> bookCount;
 			std::cout << std::endl;
@@ -162,7 +162,7 @@ void Menu::execTask(Tasks task)
 
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-			std::cout << "Книга успешно добавлена\nнажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+			std::cout << "РљРЅРёРіР° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР°\nРЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ" << std::endl;
 
 			char k = _getch();
 			system("cls");
@@ -171,15 +171,15 @@ void Menu::execTask(Tasks task)
 		}
 		case BOOK_SEARCH :
 		{
-			std::cout << "Выбрана функция поиска книги" << std::endl;	//Поиск книги
-			std::cout << "Выберете поиск: 0 - по названию, 1 - по году издания" << std::endl;
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РєРЅРёРіРё" << std::endl;	//РџРѕРёСЃРє РєРЅРёРіРё
+			std::cout << "Р’С‹Р±РµСЂРµС‚Рµ РїРѕРёСЃРє: 0 - РїРѕ РЅР°Р·РІР°РЅРёСЋ, 1 - РїРѕ РіРѕРґСѓ РёР·РґР°РЅРёСЏ" << std::endl;
 			Book* book = nullptr;
 			bool isByYear;
 			std::cin >> isByYear;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			if (!isByYear)
 			{
-				std::cout << "Введите название книги: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєРЅРёРіРё: ";
    				std::string bookName;
 				std::getline(std::cin, bookName);
 				book = Book::find(bookName, vItems);
@@ -187,7 +187,7 @@ void Menu::execTask(Tasks task)
 			}
 			else
 			{
-				std::cout << "Введите год издания книги: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ РёР·РґР°РЅРёСЏ РєРЅРёРіРё: ";
 				int year;
 				std::cin >> year;
 				book = Book::find(year, vItems);
@@ -195,39 +195,39 @@ void Menu::execTask(Tasks task)
 			if (book)
 				book->print();
 			else
-				std::cout << "Такая книга не найдена" << std::endl;
+				std::cout << "РўР°РєР°СЏ РєРЅРёРіР° РЅРµ РЅР°Р№РґРµРЅР°" << std::endl;
 			
 			
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case BOOK_LIST :
 		{
-			std::cout << "Выбрана функция вывода списка всех книг" << std::endl;	//Список всех книг
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° РІСЃРµС… РєРЅРёРі" << std::endl;	//РЎРїРёСЃРѕРє РІСЃРµС… РєРЅРёРі
 			for (Item* item : vItems) 
 			{				
 				if (dynamic_cast<Book*>(item)) 
 					static_cast<Book*>(item)->print();	
 			}
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case JOURNAL_ADD :
 		{
-			std::cout << "Выбрана функция добавления журнала" << std::endl;			//Добавить журнал
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ Р¶СѓСЂРЅР°Р»Р°" << std::endl;			//Р”РѕР±Р°РІРёС‚СЊ Р¶СѓСЂРЅР°Р»
 			if (!vAuthors.size())
 			{
-				std::cout << "Не найдено ни одного автора" << std::endl;
-				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+				std::cout << "РќРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ Р°РІС‚РѕСЂР°" << std::endl;
+				std::cout << "РЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ" << std::endl;
 
 				char k = _getch();
 				system("cls");
 				break;
 			}
 
-			std::cout << "Введите полное имя автора, список авторов приведен ниже: " << std::endl;
+			std::cout << "Р’РІРµРґРёС‚Рµ РїРѕР»РЅРѕРµ РёРјСЏ Р°РІС‚РѕСЂР°, СЃРїРёСЃРѕРє Р°РІС‚РѕСЂРѕРІ РїСЂРёРІРµРґРµРЅ РЅРёР¶Рµ: " << std::endl;
 			Author::printAuthors(vAuthors);
 			std::string authorName;
 			std::getline(std::cin, authorName);
@@ -235,32 +235,32 @@ void Menu::execTask(Tasks task)
 			Author* author = Author::findAuthor(vAuthors, authorName);
 			if (!author)
 			{
-				std::cout << "Автор с таким именем не найден\nнажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+				std::cout << "РђРІС‚РѕСЂ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ\nРЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ" << std::endl;
 
 				char k = _getch();
 				system("cls");
 				break;
 			}
-			std::cout << "Введите название журнала: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р¶СѓСЂРЅР°Р»Р°: ";
 			std::string bookName;
 			std::getline(std::cin, bookName);
 			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-			std::cout << "Введите категорию журнала: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ Р¶СѓСЂРЅР°Р»Р°: ";
 			std::string category;
 			std::getline(std::cin, category);
 
-			std::cout << "Введите год издания: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ РёР·РґР°РЅРёСЏ: ";
 			size_t year;
 			std::cin >> year;
 			std::cout << std::endl;
 
-			std::cout << "Введите номер выпуска: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РІС‹РїСѓСЃРєР°: ";
 			size_t pubNum;
 			std::cin >> pubNum;
 			std::cout << std::endl;
 
-			std::cout << "Введите количество книг: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРЅРёРі: ";
 			size_t bookCount;
 			std::cin >> bookCount;
 			std::cout << std::endl;
@@ -270,7 +270,7 @@ void Menu::execTask(Tasks task)
 
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-			std::cout << "Книга успешно добавлена\nнажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+			std::cout << "РљРЅРёРіР° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР°\nРЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ" << std::endl;
 
 			char k = _getch();
 			system("cls");
@@ -279,15 +279,15 @@ void Menu::execTask(Tasks task)
 		}
 		case JOURNAL_SEARCH :
 		{
-			std::cout << "Выбрана функция поиска журнала" << std::endl;	//Поиск журнала
-			std::cout << "Выберете поиск: 0 - по названию, 1 - по году издания" << std::endl;
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° Р¶СѓСЂРЅР°Р»Р°" << std::endl;	//РџРѕРёСЃРє Р¶СѓСЂРЅР°Р»Р°
+			std::cout << "Р’С‹Р±РµСЂРµС‚Рµ РїРѕРёСЃРє: 0 - РїРѕ РЅР°Р·РІР°РЅРёСЋ, 1 - РїРѕ РіРѕРґСѓ РёР·РґР°РЅРёСЏ" << std::endl;
 			Journal* journal = nullptr;
 			bool isByYear;
 			std::cin >> isByYear;
 
 			if (!isByYear)
 			{
-				std::cout << "Введите название журнала: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р¶СѓСЂРЅР°Р»Р°: ";
 				std::string bookName;
 				std::getline(std::cin, bookName);
 				journal = Journal::find(bookName, vItems);
@@ -295,7 +295,7 @@ void Menu::execTask(Tasks task)
 			}
 			else
 			{
-				std::cout << "Введите год издания журнала: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ РёР·РґР°РЅРёСЏ Р¶СѓСЂРЅР°Р»Р°: ";
 				int year;
 				std::cin >> year;
 				journal = Journal::find(year, vItems);
@@ -303,39 +303,39 @@ void Menu::execTask(Tasks task)
 			if (journal)
 				journal->print();
 			else
-				std::cout << "Такой журнал не найден" << std::endl;
+				std::cout << "РўР°РєРѕР№ Р¶СѓСЂРЅР°Р» РЅРµ РЅР°Р№РґРµРЅ" << std::endl;
 
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case JOURNAL_LIST:
 		{
-			std::cout << "Выбрана функция вывода списка всех журналов" << std::endl;	//Список всех журналов
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° РІСЃРµС… Р¶СѓСЂРЅР°Р»РѕРІ" << std::endl;	//РЎРїРёСЃРѕРє РІСЃРµС… Р¶СѓСЂРЅР°Р»РѕРІ
 			for (Item* item : vItems)
 			{
 				if (dynamic_cast<Journal*>(item))
 					static_cast<Journal*>(item)->print();
 
 			}
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case AUTHOR_ADD :
 		{			
-			std::cout << "Выбрана функция добавления автора" << std::endl;	//Добавить автора
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ Р°РІС‚РѕСЂР°" << std::endl;	//Р”РѕР±Р°РІРёС‚СЊ Р°РІС‚РѕСЂР°
 
-			std::cout << "Введите имя: (латиницей) ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ: (Р»Р°С‚РёРЅРёС†РµР№) ";
 			std::string name;
 			std::getline(std::cin, name);
-			std::cout << std::endl << "Введите год рождения: ";
+			std::cout << std::endl << "Р’РІРµРґРёС‚Рµ РіРѕРґ СЂРѕР¶РґРµРЅРёСЏ: ";
 			int age;
 			std::cin >> age;
 			vAuthors.push_back (new Author (name, age));
-			std::cout << std::endl << "Автор " << name << "успешно добавлен." << std::endl << "нажмите клавишу ENTER, чтобы вернуться в меню";
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
+			std::cout << std::endl << "РђРІС‚РѕСЂ " << name << "СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ." << std::endl << "РЅР°Р¶РјРёС‚Рµ РєР»Р°РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ";
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//РѕС‡РёСЃРєР° Р±СѓС„РµСЂР° РІРІРѕРґР°
 			char k = _getch();
 			system("cls");
 
@@ -344,101 +344,101 @@ void Menu::execTask(Tasks task)
 		case AUTHOR_LIST :
 		{
 			
-			std::cout << "Выбрана функция вывода списка авторов" << std::endl;	//Список всех авторов
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° Р°РІС‚РѕСЂРѕРІ" << std::endl;	//РЎРїРёСЃРѕРє РІСЃРµС… Р°РІС‚РѕСЂРѕРІ
 			Author::printAuthors(vAuthors, true);
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case CLIENT_ADD :
 		{
-			std::cout << "Выбрана функция добавления читателя" << std::endl;	//Добавить читателя
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ С‡РёС‚Р°С‚РµР»СЏ" << std::endl;	//Р”РѕР±Р°РІРёС‚СЊ С‡РёС‚Р°С‚РµР»СЏ
 
-			std::cout << "Введите имя: (латиницей) ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ: (Р»Р°С‚РёРЅРёС†РµР№) ";
 			std::string firstName;
 			std::getline(std::cin, firstName);
 
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//РѕС‡РёСЃРєР° Р±СѓС„РµСЂР° РІРІРѕРґР°
 
-			std::cout << "Введите фамилию: (латиницей) ";
+			std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: (Р»Р°С‚РёРЅРёС†РµР№) ";
 			std::string sureName;
 			std::getline(std::cin, sureName);
 
 			int cardNum;
-			std::cout << "Производится генерация номера читательского билета" << std::endl;
-			do  //генерация уникального номера читательского билета
+			std::cout << "РџСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РіРµРЅРµСЂР°С†РёСЏ РЅРѕРјРµСЂР° С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°" << std::endl;
+			do  //РіРµРЅРµСЂР°С†РёСЏ СѓРЅРёРєР°Р»СЊРЅРѕРіРѕ РЅРѕРјРµСЂР° С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°
 			{
 				cardNum = rand() % 10000;
 			} 
 			while (Client::find(cardNum, vClients));
 
 			vClients.push_back(new Client(firstName, sureName, cardNum));
-			std::cout << std::endl << "Читатель " << firstName << " " << sureName << " читательский билет #" << cardNum << " успешно добавлен." << std::endl 
-				      << "нажмите клвишу ENTER, чтобы вернуться в меню";
+			std::cout << std::endl << "Р§РёС‚Р°С‚РµР»СЊ " << firstName << " " << sureName << " С‡РёС‚Р°С‚РµР»СЊСЃРєРёР№ Р±РёР»РµС‚ #" << cardNum << " СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ." << std::endl 
+				      << "РЅР°Р¶РјРёС‚Рµ РєР»РІРёС€Сѓ ENTER, С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ";
 			
 			char k = _getch();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//РѕС‡РёСЃРєР° Р±СѓС„РµСЂР° РІРІРѕРґР°
 			system("cls");
 			break;
 		}
 		case CLIENT_SEARCH :
 		{
-			std::cout << "Выбрана функция поиска читателей" << std::endl;	//Поиск читателя
-			std::cout << "Поиск по имени или номеру читательского билета? (0 - имя, 1 - билет)" << std::endl;
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° С‡РёС‚Р°С‚РµР»РµР№" << std::endl;	//РџРѕРёСЃРє С‡РёС‚Р°С‚РµР»СЏ
+			std::cout << "РџРѕРёСЃРє РїРѕ РёРјРµРЅРё РёР»Рё РЅРѕРјРµСЂСѓ С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°? (0 - РёРјСЏ, 1 - Р±РёР»РµС‚)" << std::endl;
 			bool isCard;
 			std::cin >> isCard;
 			if (!isCard)
 			{
-				std::cout << "Введите имя или фамилию: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ РёР»Рё С„Р°РјРёР»РёСЋ: ";
 				std::string name;
 				std::cin >> name;
 				Client* fClient = Client::find(name, vClients);
 				if (fClient)
 				{
-					std::cout << "Читатель найден" << std::endl;
+					std::cout << "Р§РёС‚Р°С‚РµР»СЊ РЅР°Р№РґРµРЅ" << std::endl;
 					fClient->print();
 				}
 			}
 			else
 			{
-				std::cout << "Введите номер читательского билета: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°: ";
 				size_t cardNum;
 				std::cin >> cardNum;
 				Client* fClient = Client::find(cardNum, vClients);
 				if (fClient)
 				{
-					std::cout << "Читатель найден" << std::endl;
+					std::cout << "Р§РёС‚Р°С‚РµР»СЊ РЅР°Р№РґРµРЅ" << std::endl;
 					fClient->print();
 				}
 			}
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case CLIENT_LIST :
 		{
-			std::cout << "Выбрана функция вывода списка читателей" << std::endl;	//Список всех читателей
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° С‡РёС‚Р°С‚РµР»РµР№" << std::endl;	//РЎРїРёСЃРѕРє РІСЃРµС… С‡РёС‚Р°С‚РµР»РµР№
 			Client::printClients(vClients, true);
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case ITEM_TAKE_BACK :
 		{
-			std::cout << "Выбрана функция возвращения предмета" << std::endl;	//Вернуть предмет
-			std::cout << "Введите номер читательского билета. Список читателей ниже" << std::endl;
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰РµРЅРёСЏ РїСЂРµРґРјРµС‚Р°" << std::endl;	//Р’РµСЂРЅСѓС‚СЊ РїСЂРµРґРјРµС‚
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°. РЎРїРёСЃРѕРє С‡РёС‚Р°С‚РµР»РµР№ РЅРёР¶Рµ" << std::endl;
 			Client::printClients(vClients);
 			size_t cardNum;
 			std::cin >> cardNum;
 			Client* client = Client::find(cardNum, vClients);
 			if (!client)
 			{
-				std::cout << "Клиент с таким читательским билетом не найден" << std::endl;
-				std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+				std::cout << "РљР»РёРµРЅС‚ СЃ С‚Р°РєРёРј С‡РёС‚Р°С‚РµР»СЊСЃРєРёРј Р±РёР»РµС‚РѕРј РЅРµ РЅР°Р№РґРµРЅ" << std::endl;
+				std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 				char c = _getch();
 				break;
 			}
-			std::cout << "Введите название книги или журнала. Список ниже" << std::endl;
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєРЅРёРіРё РёР»Рё Р¶СѓСЂРЅР°Р»Р°. РЎРїРёСЃРѕРє РЅРёР¶Рµ" << std::endl;
 			for (Item* item : client->getItemList())
 			{
 				if (dynamic_cast<Book*>(item))
@@ -449,24 +449,29 @@ void Menu::execTask(Tasks task)
 			std::string bookName;
 			std::getline(std::cin, bookName);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			Item* item = Item::find(bookName, vItems);
+			if (item)
+				client->takeItem(item);
+			else
+				std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РЅР°Р№С‚Рё С‚Р°РєСѓСЋ РєРЅРёРіСѓ РёР»Рё Р¶СѓСЂРЅР°Р»" << std::endl;
 			break;
 		}
 		case ITEM_GIVE:
 		{
-			std::cout << "Выбрана функция выдачи предмета" << std::endl;	//Выдать предмет
-			std::cout << "Введите номер читательского билета. Список читателей ниже" << std::endl;
+			std::cout << "Р’С‹Р±СЂР°РЅР° С„СѓРЅРєС†РёСЏ РІС‹РґР°С‡Рё РїСЂРµРґРјРµС‚Р°" << std::endl;	//Р’С‹РґР°С‚СЊ РїСЂРµРґРјРµС‚
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ С‡РёС‚Р°С‚РµР»СЊСЃРєРѕРіРѕ Р±РёР»РµС‚Р°. РЎРїРёСЃРѕРє С‡РёС‚Р°С‚РµР»РµР№ РЅРёР¶Рµ" << std::endl;
 			Client::printClients(vClients);
 			size_t cardNum;
 			std::cin >> cardNum;
 			Client* client = Client::find(cardNum, vClients);
 			if (!client)
 			{
-				std::cout << "Клиент с таким читательским билетом не найден" << std::endl;
-				std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+				std::cout << "РљР»РёРµРЅС‚ СЃ С‚Р°РєРёРј С‡РёС‚Р°С‚РµР»СЊСЃРєРёРј Р±РёР»РµС‚РѕРј РЅРµ РЅР°Р№РґРµРЅ" << std::endl;
+				std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 				char c = _getch();
 				break;
 			}
-			std::cout << "Введите название книги или журнала. Список ниже" << std::endl;
+			std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєРЅРёРіРё РёР»Рё Р¶СѓСЂРЅР°Р»Р°. РЎРїРёСЃРѕРє РЅРёР¶Рµ" << std::endl;
 			for (Item* item : vItems)
 			{
 				if (dynamic_cast<Book*>(item))
@@ -482,30 +487,30 @@ void Menu::execTask(Tasks task)
 			if (item)
 				client->takeItem(item);
 			else
-				std::cout << "Не удалось найти такую книгу или журнал" << std::endl;
+				std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РЅР°Р№С‚Рё С‚Р°РєСѓСЋ РєРЅРёРіСѓ РёР»Рё Р¶СѓСЂРЅР°Р»" << std::endl;
 			
-			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case ITEM_SEARCH :
 		{
-			std::cout << "ITEM_SEARCH" << std::endl;	//Общий поиск по книгам и журналам	
+			std::cout << "ITEM_SEARCH" << std::endl;	//РћР±С‰РёР№ РїРѕРёСЃРє РїРѕ РєРЅРёРіР°Рј Рё Р¶СѓСЂРЅР°Р»Р°Рј	
 			break;
 		}
 		case ITEM_SEARCH_YEAR :
 		{
-			std::cout << "ITEM_SEARCH_YEAR" << std::endl;	//Поиск по году выхода
+			std::cout << "ITEM_SEARCH_YEAR" << std::endl;	//РџРѕРёСЃРє РїРѕ РіРѕРґСѓ РІС‹С…РѕРґР°
 			break;
 		}
 		case ITEM_LOAD_FILE :
 		{
-			std::cout << "ITEM_LOAD_FILE" << std::endl;	//Загрузка данных
+			std::cout << "ITEM_LOAD_FILE" << std::endl;	//Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…
 			break;
 		}
 		case EXIT :
 		{
-			std::cout << "EXIT" << std::endl;	//Выход
+			std::cout << "EXIT" << std::endl;	//Р’С‹С…РѕРґ
 			break;
 		}
 		
@@ -531,7 +536,7 @@ std::string generateISBN()
 	
 	int checkDigit = (11 - sum % 11) % 11;
 
-	// Добавляем контрольную цифру к ISBN
+	// Р”РѕР±Р°РІР»СЏРµРј РєРѕРЅС‚СЂРѕР»СЊРЅСѓСЋ С†РёС„СЂСѓ Рє ISBN
 	isbn += std::to_string(checkDigit);
 
 	return isbn;

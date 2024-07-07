@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include <vector>
 #include <iostream>
@@ -38,7 +38,7 @@ public:
 
 	void print()
 	{
-		std::cout << "Èìÿ: " << firstName << " Ôàìèëèÿ: " << sureName << " Íîìåð ÷èòàòåëüñêîãî áèëåòà: " << cardNum << std::endl;
+		std::cout << "Ð˜Ð¼Ñ: " << firstName << " Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ: " << sureName << " ÐÐ¾Ð¼ÐµÑ€ Ñ‡Ð¸Ñ‚Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð±Ð¸Ð»ÐµÑ‚Ð°: " << cardNum << std::endl;
 	}
 	std::vector <Item*> getItemList()
 	{
@@ -48,8 +48,7 @@ public:
 	static Client* find(const std::string& name, std::vector <Client*>& vClient);
 	static Client* find(size_t cardNum, std::vector <Client*>& vClient);
 	void takeItem(Item* item);
-
-
+	void giveBackItem(Item* item);
 };
 //------------------------------------------
 
