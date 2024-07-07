@@ -72,9 +72,17 @@ public:
 
 	~Menu()
 	{
+		for (auto a : vAuthors)
+			delete a;
+		for (auto c : vClients)
+			delete c;
+		for (auto i : vItems)
+			delete i;
+		for (auto m : vPtrMenuItems)
+			delete m;
 		vAuthors.clear();
 		vClients.clear();
-		vAuthors.clear();
+		vItems.clear();
 		vPtrMenuItems.clear();
 	}
 

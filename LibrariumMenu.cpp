@@ -162,7 +162,7 @@ void Menu::execTask(Tasks task)
 
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-			std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+			std::cout << "Книга успешно добавлена\nнажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
 
 			char k = _getch();
 			system("cls");
@@ -171,7 +171,35 @@ void Menu::execTask(Tasks task)
 		}
 		case BOOK_SEARCH :
 		{
-			std::cout << "BOOK_SEARCH" << std::endl;	//Поиск книги
+			std::cout << "Выбрана функция поиска книги" << std::endl;	//Поиск книги
+			std::cout << "Выберете поиск: 0 - по названию, 1 - по году издания" << std::endl;
+			Book* book = nullptr;
+			bool isByYear;
+			std::cin >> isByYear;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			if (!isByYear)
+			{
+				std::cout << "Введите название книги: ";
+   				std::string bookName;
+				std::getline(std::cin, bookName);
+				book = Book::find(bookName, vItems);
+				
+			}
+			else
+			{
+				std::cout << "Введите год издания книги: ";
+				int year;
+				std::cin >> year;
+				book = Book::find(year, vItems);
+			}
+			if (book)
+				book->print();
+			else
+				std::cout << "Такая книга не найдена" << std::endl;
+			
+			
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case BOOK_LIST :
@@ -180,23 +208,119 @@ void Menu::execTask(Tasks task)
 			for (Item* item : vItems) 
 			{				
 				if (dynamic_cast<Book*>(item)) 
-					static_cast<Book*>(item)->print();				
+					static_cast<Book*>(item)->print();	
 			}
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case JOURNAL_ADD :
 		{
-			std::cout << "JOURNAL_ADD" << std::endl;	//Добавить журнал
+			std::cout << "Выбрана функция добавления журнала" << std::endl;			//Добавить журнал
+			if (!vAuthors.size())
+			{
+				std::cout << "Не найдено ни одного автора" << std::endl;
+				std::cout << "нажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+
+				char k = _getch();
+				system("cls");
+				break;
+			}
+
+			std::cout << "Введите полное имя автора, список авторов приведен ниже: " << std::endl;
+			Author::printAuthors(vAuthors);
+			std::string authorName;
+			std::getline(std::cin, authorName);
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			Author* author = Author::findAuthor(vAuthors, authorName);
+			if (!author)
+			{
+				std::cout << "Автор с таким именем не найден\nнажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+
+				char k = _getch();
+				system("cls");
+				break;
+			}
+			std::cout << "Введите название журнала: ";
+			std::string bookName;
+			std::getline(std::cin, bookName);
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << "Введите категорию журнала: ";
+			std::string category;
+			std::getline(std::cin, category);
+
+			std::cout << "Введите год издания: ";
+			size_t year;
+			std::cin >> year;
+			std::cout << std::endl;
+
+			std::cout << "Введите номер выпуска: ";
+			size_t pubNum;
+			std::cin >> pubNum;
+			std::cout << std::endl;
+
+			std::cout << "Введите количество книг: ";
+			size_t bookCount;
+			std::cin >> bookCount;
+			std::cout << std::endl;
+			Journal* journal = new Journal(bookCount * pubNum * rand() % 1000, bookName, author, year, bookCount, bookCount, pubNum, category);
+			author->attachItem(journal);
+			vItems.push_back(std::move(journal));
+
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << "Книга успешно добавлена\nнажмите клвишу ENTER, чтобы вернуться в меню" << std::endl;
+
+			char k = _getch();
+			system("cls");
+
 			break;
 		}
 		case JOURNAL_SEARCH :
 		{
-			std::cout << "JOURNAL_SEARCH" << std::endl;	//Поиск журнала
+			std::cout << "Выбрана функция поиска журнала" << std::endl;	//Поиск журнала
+			std::cout << "Выберете поиск: 0 - по названию, 1 - по году издания" << std::endl;
+			Journal* journal = nullptr;
+			bool isByYear;
+			std::cin >> isByYear;
+
+			if (!isByYear)
+			{
+				std::cout << "Введите название журнала: ";
+				std::string bookName;
+				std::getline(std::cin, bookName);
+				journal = Journal::find(bookName, vItems);
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
+			else
+			{
+				std::cout << "Введите год издания журнала: ";
+				int year;
+				std::cin >> year;
+				journal = Journal::find(year, vItems);
+			}
+			if (journal)
+				journal->print();
+			else
+				std::cout << "Такой журнал не найден" << std::endl;
+
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case JOURNAL_LIST:
 		{
-			std::cout << "JOURNAL_LIST" << std::endl;	//Список всех журналов
+			std::cout << "Выбрана функция вывода списка всех журналов" << std::endl;	//Список всех журналов
+			for (Item* item : vItems)
+			{
+				if (dynamic_cast<Journal*>(item))
+					static_cast<Journal*>(item)->print();
+
+			}
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case AUTHOR_ADD :
@@ -221,7 +345,7 @@ void Menu::execTask(Tasks task)
 		{
 			
 			std::cout << "Выбрана функция вывода списка авторов" << std::endl;	//Список всех авторов
-			Author::printAuthors(vAuthors);
+			Author::printAuthors(vAuthors, true);
 			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
 			char c = _getch();
 			break;
@@ -294,19 +418,74 @@ void Menu::execTask(Tasks task)
 		case CLIENT_LIST :
 		{
 			std::cout << "Выбрана функция вывода списка читателей" << std::endl;	//Список всех читателей
-			Client::printClients(vClients);
+			Client::printClients(vClients, true);
 			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
 			char c = _getch();
 			break;
 		}
 		case ITEM_TAKE_BACK :
 		{
-			std::cout << "ITEM_TAKE_BACK" << std::endl;	//Вернуть предмет
+			std::cout << "Выбрана функция возвращения предмета" << std::endl;	//Вернуть предмет
+			std::cout << "Введите номер читательского билета. Список читателей ниже" << std::endl;
+			Client::printClients(vClients);
+			size_t cardNum;
+			std::cin >> cardNum;
+			Client* client = Client::find(cardNum, vClients);
+			if (!client)
+			{
+				std::cout << "Клиент с таким читательским билетом не найден" << std::endl;
+				std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+				char c = _getch();
+				break;
+			}
+			std::cout << "Введите название книги или журнала. Список ниже" << std::endl;
+			for (Item* item : client->getItemList())
+			{
+				if (dynamic_cast<Book*>(item))
+					static_cast<Book*>(item)->print();
+				else if (dynamic_cast<Journal*>(item))
+					static_cast<Journal*>(item)->print();
+			}
+			std::string bookName;
+			std::getline(std::cin, bookName);
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 		case ITEM_GIVE:
 		{
-			std::cout << "ITEM_GIVE" << std::endl;	//Выдать предмет
+			std::cout << "Выбрана функция выдачи предмета" << std::endl;	//Выдать предмет
+			std::cout << "Введите номер читательского билета. Список читателей ниже" << std::endl;
+			Client::printClients(vClients);
+			size_t cardNum;
+			std::cin >> cardNum;
+			Client* client = Client::find(cardNum, vClients);
+			if (!client)
+			{
+				std::cout << "Клиент с таким читательским билетом не найден" << std::endl;
+				std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+				char c = _getch();
+				break;
+			}
+			std::cout << "Введите название книги или журнала. Список ниже" << std::endl;
+			for (Item* item : vItems)
+			{
+				if (dynamic_cast<Book*>(item))
+					static_cast<Book*>(item)->print();
+				else if (dynamic_cast<Journal*>(item))
+					static_cast<Journal*>(item)->print();
+			}
+			std::string bookName;
+			std::getline(std::cin, bookName);
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			Item* item = Item::find(bookName, vItems);
+			if (item)
+				client->takeItem(item);
+			else
+				std::cout << "Не удалось найти такую книгу или журнал" << std::endl;
+			
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case ITEM_SEARCH :

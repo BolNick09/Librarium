@@ -14,8 +14,8 @@ private:
 	std::vector <Item*> vOwnItems;
 public:
 	Author(std::string name, size_t dateOfBirth) : name(name), dateOfBirth(dateOfBirth) {}
-	static void printAuthors(std::vector<Author*>& vAuthors);
-	static Author* findAuthor(std::vector<Author*>& vAuthors, std::string name);
+	static void printAuthors(std::vector<Author*>& vAuthors, bool isWithBooks = false);
+	static Author* findAuthor(std::vector<Author*>& vAuthors, const std::string& name);
 	std::string getName() const
 	{
 		return name;
@@ -40,9 +40,14 @@ public:
 	{
 		std::cout << "Имя: " << firstName << " Фамилия: " << sureName << " Номер читательского билета: " << cardNum << std::endl;
 	}
-	static void printClients(const std::vector <Client*>& vClient);
-	static Client* find(const std::string& Name, std::vector <Client*>& vClient);
+	std::vector <Item*> getItemList()
+	{
+		return vTakenItems;
+	}
+	static void printClients(const std::vector <Client*>& vClient, bool isPrintBooks = false);
+	static Client* find(const std::string& name, std::vector <Client*>& vClient);
 	static Client* find(size_t cardNum, std::vector <Client*>& vClient);
+	void takeItem(Item* item);
 
 
 };
@@ -66,8 +71,23 @@ public:
 		totalCount(totalCount),
 		availableCount(availableCount)
 	{}
+	int getAvailableCount()
+	{
+		return availableCount;
+	}
+	void give()
+	{
+		availableCount--;
+	}
+	void takeBack()
+	{
+		availableCount++;
+	}
+
 
 	virtual void print() const = 0; 
+	static Item* find(const std::string& name, std::vector <Item*>& vItems);
+	static Item* find(int year, std::vector <Item*>& vItems);
 	
 
 };
@@ -85,6 +105,8 @@ public:
 		pageCount(pageCount)
 	{}
 	void print() const override;
+	static Book* find(const std::string& name, std::vector <Item*>& vItems);
+	static Book* find(int year, std::vector <Item*>& vItems);
 
 };
 
@@ -101,6 +123,8 @@ public:
 		category(category)
 	{}
 	void print() const override;
+	static Journal* find(const std::string& name, std::vector <Item*>& vItems);
+	static Journal* find(int year, std::vector <Item*>& vItems);
 
 };
 
