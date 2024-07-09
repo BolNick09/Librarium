@@ -85,10 +85,24 @@ public:
 		vItems.clear();
 		vPtrMenuItems.clear();
 	}
+	
+
+	static void saveAuthors(const std::vector<Author*>& vAuthors, const std::string& filename);
+	static void loadAuthors(std::vector<Author*>& vAuthors, const std::string& filename);
+
+	static void saveClients(const std::vector<Client*>& vClients, const std::string& filename);
+	static void loadClients(std::vector<Client*>& vClients, const std::string& filename);
+
+	static void saveItems(const std::vector<Item*>& vItems, const std::string& filename);
+	static void loadItems(std::vector<Item*>& vItems, const std::string& filename, std::vector <Author*> vAuthors);
+
+	
 
 
 };
 std::string generateISBN();
+std::vector<std::string> split(std::string& str, char delimiter);
+
 
 
 

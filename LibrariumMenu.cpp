@@ -2,6 +2,10 @@
 
 #include <conio.h>
 #include <random>
+#include <fstream>
+#include <sstream>
+#include <string>
+
 
 
 
@@ -156,7 +160,20 @@ void Menu::execTask(Tasks task)
 			size_t bookCount;
 			std::cin >> bookCount;
 			std::cout << std::endl;
-			Book* book = new Book(bookCount * pageCount * rand() % 1000, bookName, author, year, bookCount, bookCount, generateISBN(), pageCount);
+			int id = 0;
+			bool isIdUnique = false;
+			do
+			{
+				id = rand() % 10000;
+				isIdUnique = true;
+				for (auto i : vItems)
+				{
+					if (i->getId() == id)
+						isIdUnique = false;
+				}
+			} 
+			while (!isIdUnique);
+			Book* book = new Book(id, bookName, author, year, bookCount, bookCount, generateISBN(), pageCount);
 			author->attachItem(book);
 			vItems.push_back(std::move (book));
 
@@ -264,7 +281,19 @@ void Menu::execTask(Tasks task)
 			size_t bookCount;
 			std::cin >> bookCount;
 			std::cout << std::endl;
-			Journal* journal = new Journal(bookCount * pubNum * rand() % 1000, bookName, author, year, bookCount, bookCount, pubNum, category);
+			int id = 0;
+			bool isIdUnique = false;
+			do
+			{
+				id = rand() % 10000;
+				isIdUnique = true;
+				for (auto i : vItems)
+				{
+					if (i->getId() == id)
+						isIdUnique = false;
+				}
+			} while (!isIdUnique);
+			Journal* journal = new Journal(id, bookName, author, year, bookCount, bookCount, pubNum, category);
 			author->attachItem(journal);
 			vItems.push_back(std::move(journal));
 
@@ -517,9 +546,6 @@ void Menu::execTask(Tasks task)
 	}
 }
 
-
-
-
 std::string generateISBN() 
 {
 	std::random_device rd;
@@ -542,3 +568,157 @@ std::string generateISBN()
 	return isbn;
 }
 
+void Menu::saveAuthors(const std::vector<Author*>& vAuthors, const std::string& filename)
+{
+	std::ofstream out(filename);
+	if (!out.is_open()) 
+	{
+		std::cerr << "Ошибка открытия файла для сохранения авторов!" << std::endl;
+		return;
+	}
+
+	for (Author* author : vAuthors) 
+	{
+		out << author->getName() << "," << author->getDateOfBirth() << "\n";
+	}
+
+	out.close();
+}
+
+void Menu::loadAuthors(std::vector<Author*>& vAuthors, const std::string& filename)
+{
+	std::ifstream in(filename);
+	if (!in.is_open()) 
+	{
+		std::cerr << "Ошибка открытия файла для загрузки авторов!" << std::endl;
+		return;
+	}
+
+	std::string line;
+	std::vector<std::string> fields;
+
+	while (std::getline(in, line)) 
+	{
+		fields = split(line, ',');
+		Author* author = new Author(fields[0], std::stoul(fields[1]));
+		vAuthors.push_back(author);
+	}
+
+	in.close();
+}
+
+
+void Menu::saveClients(const std::vector<Client*>& vClients, const std::string& filename)
+{
+	std::ofstream out(filename);
+	if (!out.is_open()) 
+	{
+		std::cerr << "Ошибка открытия файла для сохранения клиентов!" << std::endl;
+		return;
+	}
+
+	for (Client* client : vClients) 
+	{
+		out << client->getFirstName() << "," << client->getSureName() << "," << client->getCardNum() << "\n";
+	}
+
+	out.close();
+}
+
+void Menu::loadClients(std::vector<Client*>& vClients, const std::string& filename)
+{
+	std::ifstream in(filename);
+	if (!in.is_open()) 
+	{
+		std::cerr << "Ошибка открытия файла для загрузки клиентов!" << std::endl;
+		return;
+	}
+
+	std::string line;
+	std::vector<std::string> fields;
+
+	while (std::getline(in, line)) 
+	{
+		fields = split(line, ',');
+		Client* client = new Client(fields[0], fields[1], std::stoul(fields[2]));
+		vClients.push_back(client);
+	}
+
+	in.close();
+}
+
+
+void Menu::saveItems(const std::vector<Item*>& vItems, const std::string& filename)
+{
+	std::ofstream out(filename);
+	if (!out.is_open()) 
+	{
+		std::cerr << "Ошибка открытия файла для сохранения объектов!" << std::endl;
+		return;
+	}
+
+	for (Item* item : vItems) 
+	{
+		if (dynamic_cast<Book*>(item) != nullptr) 
+		{
+			Book* book = dynamic_cast<Book*>(item);
+			out << "Book," << book->getId() << "," << book->getName() << "," << book->getAuthor()->getName() << "," 
+				<< book->getPublishYear() << "," << book->getTotalCount() << "," << book->getAvailableCount() << "," << book->getISBN() << "," 
+				<< book->getPageCount() << "\n";
+		}
+		else if (dynamic_cast<Journal*>(item) != nullptr) 
+		{
+			Journal* journal = dynamic_cast<Journal*>(item);
+			out << "Journal," << journal->getId() << "," << journal->getName() << "," << journal->getAuthor()->getName() << "," 
+				<< journal->getPublishYear() << "," << journal->getTotalCount() << "," << journal->getAvailableCount() << "," 
+				<< journal->getPubNum() << "," << journal->getCategory() << "\n";
+		}
+	}
+
+	out.close();
+}
+
+void Menu::loadItems(std::vector<Item*>& vItems, const std::string& filename, std::vector <Author*> vAuthors)
+{
+	std::ifstream in(filename);
+	if (!in.is_open()) {
+		std::cerr << "Ошибка открытия файла для загрузки объектов!" << std::endl;
+		return;
+	}
+
+	std::string line;
+	std::vector<std::string> fields;
+
+	while (std::getline(in, line)) 
+	{
+		fields = split(line, ',');
+		if (fields[0] == "Book") 
+		{
+			Book* book = new Book(std::stoul(fields[1]), fields[2], Author::findAuthor(vAuthors, fields[2]), std::stoul(fields[4]), 
+								  std::stoul(fields[5]), std::stoul(fields[6]), fields[7], std::stoul(fields[8]));
+			vItems.push_back(std::move (book));
+		}
+		else if (fields[0] == "Journal") 
+		{
+			Journal* journal = new Journal(std::stoul(fields[1]), fields[2], Author::findAuthor(vAuthors, fields[2]), std::stoul(fields[4]), 
+										   std::stoul(fields[5]), std::stoul(fields[6]), std::stoul(fields[7]), fields[8]);
+			vItems.push_back(std::move (journal));
+		}
+	}
+
+	in.close();
+}
+
+
+std::vector<std::string> split(std::string& str, char delimiter)
+{
+	std::vector<std::string> fields;
+	std::stringstream ss(str);
+
+	std::string field;
+	while (std::getline(ss, field, delimiter))
+	{
+		fields.push_back(field);
+	}
+	return fields;
+}

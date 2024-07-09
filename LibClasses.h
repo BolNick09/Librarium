@@ -20,6 +20,10 @@ public:
 	{
 		return name;
 	}
+	size_t getDateOfBirth()
+	{
+		return dateOfBirth;
+	}
 	void attachItem(Item* item)
 	{
 		vOwnItems.push_back(item);
@@ -49,6 +53,20 @@ public:
 	static Client* find(size_t cardNum, std::vector <Client*>& vClient);
 	void takeItem(Item* item);
 	void giveBackItem(Item* item);
+
+	std::string getFirstName()
+	{
+		return firstName;
+	}
+	std::string getSureName()
+	{
+		return sureName;
+	}
+	size_t getCardNum()
+	{
+		return cardNum;
+	}
+
 };
 //------------------------------------------
 
@@ -70,10 +88,6 @@ public:
 		totalCount(totalCount),
 		availableCount(availableCount)
 	{}
-	int getAvailableCount()
-	{
-		return availableCount;
-	}
 	void give()
 	{
 		availableCount--;
@@ -82,6 +96,31 @@ public:
 	{
 		availableCount++;
 	}
+	size_t getId() const
+	{
+		return id;
+	}
+	std::string getName() const
+	{
+		return name;
+	}
+	Author* getAuthor() const
+	{
+		return author;
+	}
+	size_t getPublishYear() const
+	{
+		return publishYear;
+	}
+	int getTotalCount() const
+	{
+		return totalCount;
+	}
+	int getAvailableCount() const
+	{
+		return availableCount;
+	}
+
 
 
 	virtual void print() const = 0; 
@@ -103,6 +142,16 @@ public:
 		ISBN(ISBN),
 		pageCount(pageCount)
 	{}
+	std::string getISBN() const
+	{
+		return ISBN;
+	}
+	size_t getPageCount() const
+	{
+		return pageCount;
+	}
+
+
 	void print() const override;
 	static Book* find(const std::string& name, std::vector <Item*>& vItems);
 	static Book* find(int year, std::vector <Item*>& vItems);
@@ -121,6 +170,14 @@ public:
 		pubNum(pubNum),
 		category(category)
 	{}
+	size_t getPubNum() const
+	{
+		return pubNum;
+	}
+	std::string getCategory() const
+	{
+		return category;
+	}
 	void print() const override;
 	static Journal* find(const std::string& name, std::vector <Item*>& vItems);
 	static Journal* find(int year, std::vector <Item*>& vItems);
@@ -129,3 +186,13 @@ public:
 
 
 
+
+
+static Author * findAuthor(std::vector<Author*>&vAuthors, const std::string & name) {
+	for (Author* author : vAuthors) {
+		if (author->getName() == name) {
+			return author;
+		}
+	}
+	return nullptr;  // Автор не найден
+}
