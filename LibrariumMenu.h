@@ -23,7 +23,8 @@ enum Tasks
 	ITEM_TAKE_BACK,		//Вернуть предмет
 	ITEM_SEARCH,		//Общий поиск по книгам и журналам
 	ITEM_SEARCH_YEAR,	//Поиск по году выхода
-	ITEM_LOAD_FILE,		//Загрузка данных
+	ITEM_SAVE_FILE,		//Сохранение в файл
+	ITEM_LOAD_FILE,		//Загрузка из файла
 	EXIT				//Выход
 };
 
@@ -63,12 +64,16 @@ private:
 	std::vector<Client*> vClients;
 	std::vector<Item*> vItems;
 public:
+	
+	bool isExit = false;
+
 	void fillVMenuItems();
 	void printMenu() const;
 
 	void navigate(const char key);
 	int findSelected();
 	void execTask(Tasks task);
+
 
 	~Menu()
 	{

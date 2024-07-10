@@ -22,11 +22,11 @@ int main()
     menu.fillVMenuItems();
     menu.printMenu();
 
-    while (true)
+    do
     {
         char key = _getch();
         menu.navigate(key);
-    }
-
+    } 
+    while (!menu.isExit);
 }
 

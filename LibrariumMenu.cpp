@@ -12,28 +12,29 @@
 void Menu::fillVMenuItems()
 {
 	vPtrMenuItems.push_back(new MenuItem("\t1. Управление книгами", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t1.1. Добавить книгу", Tasks::BOOK_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t1.2. Поиск книги", Tasks::BOOK_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t1.3. Список всех книг", Tasks::BOOK_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t1.1. Добавить книгу (реализовано)", Tasks::BOOK_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t1.2. Поиск книги (реализовано)", Tasks::BOOK_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t1.3. Список всех книг (реализовано)", Tasks::BOOK_LIST));
 	vPtrMenuItems.push_back(new MenuItem("\t2. Управление журналами", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t2.1. Добавить журнал", Tasks::JOURNAL_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t2.2. Поиск журнала", Tasks::JOURNAL_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t2.3. Список всех журналов", Tasks::JOURNAL_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t2.1. Добавить журнал (реализовано)", Tasks::JOURNAL_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t2.2. Поиск журнала (реализовано)", Tasks::JOURNAL_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t2.3. Список всех журналов (реализовано)", Tasks::JOURNAL_LIST));
 	vPtrMenuItems.push_back(new MenuItem("\t3. Управление авторами", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t3.1. Добавить автора", Tasks::AUTHOR_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t3.2. Список всех авторов", Tasks::AUTHOR_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t3.1. Добавить автора (реализовано)", Tasks::AUTHOR_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t3.2. Список всех авторов (реализовано)", Tasks::AUTHOR_LIST));
 	vPtrMenuItems.push_back(new MenuItem("\t4. Управление читателями", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t4.1. Добавить читателя", Tasks::CLIENT_ADD));
-	vPtrMenuItems.push_back(new MenuItem("\t4.2. Поиск читателя", Tasks::CLIENT_SEARCH));
-	vPtrMenuItems.push_back(new MenuItem("\t4.3. Список всех читателей", Tasks::CLIENT_LIST));
-	vPtrMenuItems.push_back(new MenuItem("\t5. Выдача предметов читателям", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t5.1. Выдать предмет", Tasks::ITEM_GIVE));
+	vPtrMenuItems.push_back(new MenuItem("\t4.1. Добавить читателя (реализовано)", Tasks::CLIENT_ADD));
+	vPtrMenuItems.push_back(new MenuItem("\t4.2. Поиск читателя (реализовано)", Tasks::CLIENT_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t4.3. Список всех читателей (реализовано)", Tasks::CLIENT_LIST));
+	vPtrMenuItems.push_back(new MenuItem("\t5. Выдача предметов читателям ", Tasks::TITLE));
+	vPtrMenuItems.push_back(new MenuItem("\t5.1. Выдать предмет (реализовано)", Tasks::ITEM_GIVE));
 	vPtrMenuItems.push_back(new MenuItem("\t6. Возврат предметов от читателей", Tasks::TITLE));
-	vPtrMenuItems.push_back(new MenuItem("\t6.1. Вернуть предмет", Tasks::ITEM_TAKE_BACK));
-	vPtrMenuItems.push_back(new MenuItem("\t7. Общий поиск по книгам и журналам", Tasks::ITEM_SEARCH));
+	vPtrMenuItems.push_back(new MenuItem("\t6.1. Вернуть предмет (реализовано)", Tasks::ITEM_TAKE_BACK));
+	vPtrMenuItems.push_back(new MenuItem("\t7. Общий поиск по книгам и журналам (реализовано в других пунктах)", Tasks::ITEM_SEARCH));
 	vPtrMenuItems.push_back(new MenuItem("\t7.1. Поиск по году выхода", Tasks::ITEM_SEARCH_YEAR));
-	vPtrMenuItems.push_back(new MenuItem("\t8. Загрузка данных", Tasks::ITEM_LOAD_FILE));
-	vPtrMenuItems.push_back(new MenuItem("\t9. Выход", Tasks::EXIT));
+	vPtrMenuItems.push_back(new MenuItem("\t8. Сохранение данных (реализовано)", Tasks::ITEM_SAVE_FILE));
+	vPtrMenuItems.push_back(new MenuItem("\t9. Загрузка данных (реализовано)", Tasks::ITEM_LOAD_FILE));
+	vPtrMenuItems.push_back(new MenuItem("\t10. Выход (реализовано)", Tasks::EXIT));
 }
 
 void Menu::printMenu() const
@@ -363,7 +364,7 @@ void Menu::execTask(Tasks task)
 			int age;
 			std::cin >> age;
 			vAuthors.push_back (new Author (name, age));
-			std::cout << std::endl << "Автор " << name << "успешно добавлен." << std::endl << "нажмите клавишу ENTER, чтобы вернуться в меню";
+			std::cout << std::endl << "Автор " << name << " успешно добавлен." << std::endl << "нажмите клавишу ENTER, чтобы вернуться в меню";
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//очиска буфера ввода
 			char k = _getch();
 			system("cls");
@@ -480,7 +481,11 @@ void Menu::execTask(Tasks task)
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			Item* item = Item::find(bookName, vItems);
 			if (item)
+			{
 				client->takeItem(item);
+				std::cout << "Книга успешно возвращена" << std::endl;
+			}
+
 			else
 				std::cout << "Не удалось найти такую книгу или журнал" << std::endl;
 			break;
@@ -508,13 +513,17 @@ void Menu::execTask(Tasks task)
 				else if (dynamic_cast<Journal*>(item))
 					static_cast<Journal*>(item)->print();
 			}
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::string bookName;
 			std::getline(std::cin, bookName);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 			Item* item = Item::find(bookName, vItems);
 			if (item)
+			{
 				client->takeItem(item);
+				std::cout << "Книга успешено выдана" << std::endl;
+			}
 			else
 				std::cout << "Не удалось найти такую книгу или журнал" << std::endl;
 			
@@ -532,14 +541,32 @@ void Menu::execTask(Tasks task)
 			std::cout << "ITEM_SEARCH_YEAR" << std::endl;	//Поиск по году выхода
 			break;
 		}
+		case ITEM_SAVE_FILE:
+		{
+			std::cout << "Выбрана функция сохранения данных" << std::endl;	//Сохранение данных
+			Menu::saveAuthors(vAuthors, "authors.csv");
+			Menu::saveClients(vClients, "clients.csv");
+			Menu::saveItems(vItems, "Items.csv");
+			std::cout << "Данные успешно сохранены" << std::endl;
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
+			break;
+		}
 		case ITEM_LOAD_FILE :
 		{
-			std::cout << "ITEM_LOAD_FILE" << std::endl;	//Загрузка данных
+			std::cout << "Выбрана функция загрузки данных" << std::endl;	//Загрузка данных
+			Menu::loadAuthors(vAuthors, "authors.csv");
+			Menu::loadClients(vClients, "clients.csv");
+			Menu::loadItems(vItems, "Items.csv", vAuthors);
+			std::cout << "Данные успешно загружены" << std::endl;
+			std::cout << "Нажмите ENTER для возврата в меню" << std::endl;
+			char c = _getch();
 			break;
 		}
 		case EXIT :
 		{
 			std::cout << "EXIT" << std::endl;	//Выход
+			isExit = true;
 			break;
 		}
 		
@@ -692,17 +719,21 @@ void Menu::loadItems(std::vector<Item*>& vItems, const std::string& filename, st
 	while (std::getline(in, line)) 
 	{
 		fields = split(line, ',');
+		Author* author = Author::findAuthor(vAuthors, fields[3]);
 		if (fields[0] == "Book") 
 		{
-			Book* book = new Book(std::stoul(fields[1]), fields[2], Author::findAuthor(vAuthors, fields[2]), std::stoul(fields[4]), 
+			
+			Book* book = new Book(std::stoul(fields[1]), fields[2], author, std::stoul(fields[4]), 
 								  std::stoul(fields[5]), std::stoul(fields[6]), fields[7], std::stoul(fields[8]));
-			vItems.push_back(std::move (book));
+			vItems.push_back(book);
+			author->attachItem(book);
 		}
 		else if (fields[0] == "Journal") 
 		{
-			Journal* journal = new Journal(std::stoul(fields[1]), fields[2], Author::findAuthor(vAuthors, fields[2]), std::stoul(fields[4]), 
+			Journal* journal = new Journal(std::stoul(fields[1]), fields[2], author, std::stoul(fields[4]),
 										   std::stoul(fields[5]), std::stoul(fields[6]), std::stoul(fields[7]), fields[8]);
-			vItems.push_back(std::move (journal));
+			vItems.push_back(journal);
+			author->attachItem(journal);
 		}
 	}
 
